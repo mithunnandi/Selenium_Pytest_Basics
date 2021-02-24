@@ -13,20 +13,3 @@ def init__driver(request):
     request.cls.driver = web_driver
     yield
     web_driver.close()
-
-
-@pytest.mark.usefixtures("init__driver")
-class BaseTest:
-    pass
-
-
-class Test_Google(BaseTest):
-
-    def Test_google_title(self):
-        self.driver.get("http://www.google.com")
-        assert self.driver.title == "Google"
-
-
-    def Test_google_url(self):
-        self.driver.get("http://www.google.com")
-        assert self.driver.current_url == "https://www.google.com/?gws_rd=ssl"
